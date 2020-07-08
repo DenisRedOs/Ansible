@@ -1,0 +1,10 @@
+---
+- hosts: all
+  tasks:
+    - name: Install programm
+      yum:
+        name: "{{ packages }}"
+      vars:
+        packages:
+        - unrar
+        - p7zip
