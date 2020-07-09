@@ -1,6 +1,5 @@
 ---
 - hosts: all
-  user: root
   tasks:
     - name: Install programm
       yum:
