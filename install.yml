@@ -1,0 +1,26 @@
+---
+- hosts: all
+  vars_prompt:
+  - name: "name"
+    prompt: "Enter of name machine"
+    private: no
+  - name: "type"
+    prompt: "Enter of type of server"
+    private: no
+  tasks:
+
+    - name: Install httpd
+      yum:
+        name: "{{ packages }}"
+      vars:
+        packages:
+        - httpd
+      when: name == "web"
+
+    - name: Install httpd
+      yum:
+        name: "{{ packages }}"
+      vars:
+        packages:
+        - vsftpd
+      when: name == "ftp"
