@@ -1,8 +1,8 @@
 ---
 - hosts: all
   vars_prompt:
-  - name: "nameofmachine"
     prompt: "Enter of name machine"
+  - name: "nameofmachine"
     private: no
   - name: "type"
     prompt: "Enter of type of server"
