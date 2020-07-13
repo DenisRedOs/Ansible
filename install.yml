@@ -1,7 +1,7 @@
 ---
 - hosts: all
   vars_prompt:
-  - name: "name"
+  - name: "nameofmachine"
     prompt: "Enter of name machine"
     private: no
   - name: "type"
@@ -9,13 +9,16 @@
     private: no
   tasks:
 
+    - name: Rename
+      raw: hostname {{ nameofmachine }}
+      
     - name: Install httpd
       yum:
         name: "{{ packages }}"
       vars:
         packages:
         - httpd
-      when: name == "web"
+      when: type == "web"
 
     - name: Install httpd
       yum:
@@ -23,4 +26,4 @@
       vars:
         packages:
         - vsftpd
-      when: name == "ftp"
+      when: type == "ftp"
